@@ -1,0 +1,58 @@
+minikube start
+minikube dashboard
+
+kubectl cluster-info
+
+
+kubectl create -f <file.yaml>
+
+kubectl get pods
+
+kubectl describe pod <pod name>
+
+kubectl get nodes
+
+kubectl describe <node>
+
+kubectl logs <node>
+
+minikube ssh
+
+docker commit daad73b4daf2 danieleporta/my-private-repo:version1
+
+
+1) exercise
+
+https://hub.docker.com/r/stefanwalther/docker-test
+
+kubectl exec simple-test -it -- sh
+
+apk add curl
+curl http://localhost:3000
+
+http://localhost:8888/health-check
+
+kubectl port-forward simple-test 8888:3000
+
+kubectl delete <pod name>
+
+2)
+
+kubectl get namespaces
+-> default
+-> unipr-test
+
+how to associate the pod to namespace
+
+
+labels
+kubectl get pods -l env
+
+
+# install telnet
+apk update
+apk add busybox-extras # telnet
+apk add mysql-client
+
+mysql -u root -p'password' -h 172.17.0.8 -P 3306
+

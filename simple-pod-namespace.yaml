@@ -1,0 +1,18 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: unipr-soi
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: simple-test
+  namespace: unipr-soi
+spec:
+  containers:
+  - name: simple-test
+    image: stefanwalther/docker-test
+    ports:
+    - containerPort: 3000
