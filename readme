@@ -1,8 +1,14 @@
+## Basic commands
+
+### minikube
 minikube start
+
 minikube dashboard
 
-kubectl cluster-info
+minikube ssh
 
+### Kubectl
+kubectl cluster-info
 
 kubectl create -f <file.yaml>
 
@@ -14,14 +20,18 @@ kubectl get nodes
 
 kubectl describe <node>
 
-kubectl logs <node>
+kubectl describe po <pod>
 
-minikube ssh
+kubectl logs <pod>
+
+kubectl exec <pod> -it -- sh
+
+
 
 docker commit daad73b4daf2 danieleporta/my-private-repo:version1
 
 
-1) exercise
+###exercise 1
 
 https://hub.docker.com/r/stefanwalther/docker-test
 
@@ -36,7 +46,7 @@ kubectl port-forward simple-test 8888:3000
 
 kubectl delete <pod name>
 
-2)
+###exercise 2
 
 kubectl get namespaces
 -> default
@@ -55,4 +65,12 @@ apk add busybox-extras # telnet
 apk add mysql-client
 
 mysql -u root -p'password' -h 172.17.0.8 -P 3306
+
+###exercise 6
+
+Scale up the replica set
+kubectl scale rs <replicaset> --replicas=4
+
+
+You may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section.
 
