@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
   - name: simple-test
-    image: stefanwalther/docker-test # add :version2 to use local image
+    image: stefanwalther/docker-test 
     ports:
     - containerPort: 8080
 
