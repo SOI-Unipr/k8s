@@ -52,14 +52,9 @@ labels
 kubectl get pods -l env
 
 
-# install telnet
-apk update
-apk add busybox-extras # telnet
-apk add mysql-client
-
 mysql -u root -p'password' -h 172.17.0.8 -P 3306
 
-###exercise 6 Replica set
+### exercise 6 Replica set
 
 >Scale up the replica set using
 ```sh
