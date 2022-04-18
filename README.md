@@ -8,7 +8,7 @@ minikube start
 minikube dashboard
 minikube ssh
 ```
-### Kubectl
+### kubectl
 ```sh
 kubectl cluster-info
 kubectl create -f <file.yaml>
@@ -24,7 +24,7 @@ kubectl port-forward simple-test <local port>:<pod port>
 kubectl delete <pod name>
 kubectl delete pods --all
 ```
-### Other
+### others
 ```sh
 apk update
 apk add busybox-extras # telnet included
