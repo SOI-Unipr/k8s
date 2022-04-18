@@ -13,9 +13,11 @@ metadata:
 spec:  
   limits:
   - max:
-      memory: 1Gi
+      memory: 0.5Gi
     min:
-      memory: 500Mi
+      memory: 100Mi
+    default:
+      memory: 200Mi
     type: Container
 
 ---
