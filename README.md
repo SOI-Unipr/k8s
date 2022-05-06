@@ -41,7 +41,7 @@ mysql -u root -p'password' -h <ip> -P 3306
 ```sh
 curl http://localhost:3000/health-check
 ```
->try to recreate the pod and check the associated ip
+>try to recreate the pod and check the associated ip. 
 >check the dashboard
 
 ### exercise 2 - Namespace
