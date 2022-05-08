@@ -24,7 +24,8 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: simple-test-pod  
+  name: simple-pod  
+  namespace: unipr-soi
 spec:
   containers:
   - name: simple-test

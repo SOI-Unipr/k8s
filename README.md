@@ -20,19 +20,25 @@ minikube ssh
 ```sh
 kubectl cluster-info
 kubectl create -f <file.yaml>
+kubectl create namespace <namespace name>
+kubectl create -f <file.yaml> -n <namespace name>
 kubectl get pods
+kubectl get pods -o wide # ip
 kubectl get nodes
+kubectl get namespaces
 kubectl get svc
 kubectl get replicaset
 kubectl describe <node>
 kubectl describe po <pod>
 kubectl logs <pod>
 kubectl exec <pod> -it -- sh
-kubectl port-forward simple-test <local port>:<pod port>
-kubectl delete <pod name>
+kubectl port-forward simple-pod <local port>:<pod port>
+kubectl delete pod <pod name>
+kubectl delete ns <namespace name>
 kubectl delete pods --all
 ```
 ### others
+Install additional apps on alpine linux
 ```sh
 apk update
 apk add busybox-extras # telnet included
@@ -41,6 +47,11 @@ apk add curl
 
 mysql -u root -p'password' -h <ip> -P 3306
 
+```
+
+Find the ip of the container
+```
+ip a
 ```
 
 ### exercise 1 - Simple pod
@@ -54,15 +65,15 @@ curl http://localhost:3000/health-check
 
 ### exercise 2 - Namespace
 >Create a new namespace and associate a pod to it.
->Check the namespaces available
->What happen deleting the namespace?
+>Check the namespaces/pods available also in the dashboard 
+>how to associate a new pod to namespace
+>what will happen after deleting the namespace?
 
-how to associate the pod to namespace
 
 ### exercise 3 - Namespace with LimitRange
 >Create a namespace with limit range.
 >Check the limit on the console
->Change the limit and use the apple command:
+>Change the limit and use the apply command:
 ```sh
 kubectl apply -f 3.pod-with-namespace-and-limit.yaml
 ```
@@ -75,7 +86,7 @@ kubectl get pods -l env
 ```
 >You can associate labels after pods creation using:
 ```sh
-kubectl label po simple-test env=debug --overwrite #override existing label env
+kubectl label po <pod name> env=debug --overwrite #override existing label env
 ```
 >try to connect the db pod from client pod installing mysql client
 
@@ -94,6 +105,11 @@ kubectl describe pod liveness-pod
 ```sh
 kubectl scale rs <replicaset> --replicas=4
 ```
+or change the replicas on the yaml file and then
+```
+kubectl apply -f <yaml file>
+```
+
 >You may never need to manipulate ReplicaSet objects: use a Deployment instead, and define your application in the spec section.
 
 ### exercise 7 - Service
