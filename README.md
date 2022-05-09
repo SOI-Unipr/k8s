@@ -26,6 +26,7 @@ kubectl cluster-info
 kubectl create -f <file.yaml>
 kubectl create namespace <namespace name>
 kubectl create -f <file.yaml> -n <namespace name>
+kubectl delete -f <file.yaml> -n <namespace name>
 kubectl get pods
 kubectl get pods -o wide # ip
 kubectl get nodes
