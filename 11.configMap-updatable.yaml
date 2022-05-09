@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-config
+data:
+  hello: world!!
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  selector:
+    matchLabels:
+      app: test
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: test
+    spec:
+      containers:
+      - name: configmaptestapp
+        image: stefanwalther/docker-test
+        volumeMounts:
+        - mountPath: /config
+          name: data-volume
+        ports:
+        - containerPort: 80
+      volumes:
+        - name: data-volume
+          configMap:
+            name: test-config

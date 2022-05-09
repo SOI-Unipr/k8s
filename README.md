@@ -8,13 +8,17 @@ https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
 https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
 
+
+## kubectl Cheat Sheet
+https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
 ## Basic commands
 
 ### minikube
 ```sh
 minikube start
 minikube dashboard
-minikube ssh
+minikube ssh # access to the node
 ```
 ### kubectl
 ```sh
@@ -131,19 +135,30 @@ With node port you can expose a service using node port. Use this command to fin
 ```sh
 minikube service --url simple-service
 ```
-Try to connect to the service from another pod on the same cluster using: 
-- node ip + port
-- service cluster ip + port
+Try to connect to the service from the host: 
+curl  http://<host>:<port>
+
 
 ### exercise 9 - Volume
->Let's try creating a hostPath volume.
->The volume is not running. Why ?
+Let's try creating a hostPath volume.
+The volume is not running. Why ? *Tip use describe command or ```kubectl get event --field-selector involvedObject.name=my-pod```*
 >Warning:
 >HostPath volumes present many security risks, and it is a best practice to avoid the use of HostPaths when possible. When a HostPath volume must be used, it should be scoped to only the required file or >directory.
 
 ### exercise 10 - ConfigMap
 >ConfigMap are object containing key/value pairs with the values ranging from short literals to full config files.
->try to change the configMap and use the apply command insted of recreate configMap (and pod)
+>try to change the configMap and use the apply command: it has no effect on the pod
 ```sh
 kubectl apply -f <yaml file>
+```
+
+
+### exercise 11 - ConfigMap with volume
+>try to change the configMap and use the apply command: 
+```sh
+kubectl apply -f <yaml file>
+```
+check the /config/hello file:
+```
+kubectl exec <pod name> -it -- cat /config/hello
 ```

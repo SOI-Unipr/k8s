@@ -22,8 +22,17 @@ metadata:
   name: pod-env-var 
 spec:
   containers:
-    - name: env-var-configmap
-      image: nginx:1.7.9 
-      envFrom:
+  - name: simple-test
+    image: stefanwalther/docker-test
+    envFrom:
         - configMapRef:
             name: example-configmap
+    ports:
+    - containerPort: 3000
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    configMap:
+        name: example-configmap 
