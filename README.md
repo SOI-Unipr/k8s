@@ -117,8 +117,11 @@ kubectl apply -f <yaml file>
 >Each service has an IP address and port that never change while the service exists.
 >By default the service is of type ClusterIP
 >
->After service creation, try to connect to it from an other pods using IP or service name
->look at the environment variables of the service pod, you should see the service cluster ip and port
+After service creation, try to connect to it from an other pods trough wget command using service IP or service name or from node's curl using
+```
+minikube ssh
+```
+look at the environment variables of the service pod, you should see the service cluster ip and port
 ```sh
 kubectl exec simple-pod-client -it -- env|grep SIMPLE_SERVICE_SERVICE
 ``` 
@@ -128,6 +131,9 @@ With node port you can expose a service using node port. Use this command to fin
 ```sh
 minikube service --url simple-service
 ```
+Try to connect to the service from another pod on the same cluster using: 
+- node ip + port
+- service cluster ip + port
 
 ### exercise 9 - Volume
 >Let's try creating a hostPath volume.
