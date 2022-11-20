@@ -94,7 +94,10 @@ kubectl get pods -l env
 kubectl label po <pod name> env=debug --overwrite #override existing label env
 ```
 >try to connect the db pod from client pod installing mysql client
-
+tip use the following command to retrieve pod's ips
+```
+kubectl get pods -o wide
+```
 ### exercise 5 - Liveness
 >You can specify a liveness probe for each container in the pod’s specification. Kubernetes will periodically execute the probe and restart the container if the probe fails.
 > https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
