@@ -2,8 +2,16 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: test-config
-data:
-  hello: world!!
+data:  
+  database: mongodb
+  database_uri: mongodb://localhost:27017
+  keys: | 
+    {
+      "firstName": "John",
+      "lastName": "Doe",
+      "isAlive": true
+      "age": 39
+    }
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -22,6 +30,9 @@ spec:
       containers:
       - name: configmaptestapp
         image: stefanwalther/docker-test
+        envFrom:
+        - configMapRef:
+            name: test-config
         volumeMounts:
         - mountPath: /config
           name: data-volume
