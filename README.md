@@ -35,6 +35,7 @@ kubectl get svc
 kubectl get replicaset
 kubectl describe <node>
 kubectl describe po <pod>
+kubectl describe limitranges -n <namespace name>
 kubectl logs <pod>
 kubectl exec <pod> -it -- sh
 kubectl port-forward simple-pod <local port>:<pod port>
@@ -77,7 +78,7 @@ curl http://localhost:3000/health-check
 
 ### exercise 3 - Namespace with LimitRange
 >Create a namespace with limit range.
->Check the limit on the console
+>Check the limit on the console and using describe command
 >Change the limit and use the apply command:
 ```sh
 kubectl apply -f 3.pod-with-namespace-and-limit.yaml
