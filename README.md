@@ -70,8 +70,8 @@ curl http://localhost:3000/health-check
 
 ### exercise 2 - Namespace
 >Create a new namespace and associate a pod to it.
->Check the namespaces/pods available also in the dashboard 
->how to associate a new pod to namespace
+>Check the namespaces/pods available also in the dashboard.
+>How to associate a new pod to namespace?
 >what will happen after deleting the namespace?
 
 
