@@ -146,7 +146,7 @@ curl  http://<host>:<port>
 
 ### exercise 9 - Volume
 Let's try creating a hostPath volume.
-The volume is not running. Why ? *Tip use describe command or ```kubectl get event --field-selector involvedObject.name=my-pod```*
+The volume is not running. Why ? *Tip use describe command or ```kubectl get event --field-selector involvedObject.name=my-pod```* Remember hostPath points to a path in minikube, not to a path on your host machine*
 >Warning:
 >HostPath volumes present many security risks, and it is a best practice to avoid the use of HostPaths when possible. When a HostPath volume must be used, it should be scoped to only the required file or >directory.
 
