@@ -152,18 +152,9 @@ The volume is not running. Why ? *Tip use describe command or ```kubectl get eve
 
 ### exercise 10 - ConfigMap
 >ConfigMap are object containing key/value pairs with the values ranging from short literals to full config files.
->try to change the configMap and use the apply command: it has no effect on the pod
+>try to change the configMap and use the apply command: it has no effect on the vars but only to config map volume files:
 ```sh
 kubectl apply -f <yaml file>
+kubectl exec pod-env-var -it -- cat /test-pd/keys
 ```
 
-
-### exercise 11 - ConfigMap with volume
->try to change the configMap and use the apply command: 
-```sh
-kubectl apply -f <yaml file>
-```
-check the /config/hello file:
-```
-kubectl exec <pod name> -it -- cat /config/hello
-```
