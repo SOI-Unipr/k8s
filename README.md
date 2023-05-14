@@ -52,7 +52,7 @@ apk add mysql-client
 apk add curl
 
 mysql -u root -p'password' -h <ip> -P 3306
-
+show databases;
 ```
 
 Find the ip of the container
@@ -94,8 +94,8 @@ kubectl get pods -l env
 ```sh
 kubectl label po <pod name> env=debug --overwrite #override existing label env
 ```
->try to connect the db pod from client pod installing mysql client
-tip use the following command to retrieve pod's ips
+>try to connect the db pod from client pod installing mysql client.
+>Tip: use the following command to retrieve pod's ips
 ```
 kubectl get pods -o wide
 ```
