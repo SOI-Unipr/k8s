@@ -35,6 +35,7 @@ kubectl get svc
 kubectl get replicaset
 kubectl describe <node>
 kubectl describe po <pod>
+kubectl describe limitranges -n <namespace name>
 kubectl logs <pod>
 kubectl exec <pod> -it -- sh
 kubectl port-forward simple-pod <local port>:<pod port>
@@ -51,7 +52,7 @@ apk add mysql-client
 apk add curl
 
 mysql -u root -p'password' -h <ip> -P 3306
-
+show databases;
 ```
 
 Find the ip of the container
@@ -70,14 +71,14 @@ curl http://localhost:3000/health-check
 
 ### exercise 2 - Namespace
 >Create a new namespace and associate a pod to it.
->Check the namespaces/pods available also in the dashboard 
->how to associate a new pod to namespace
+>Check the namespaces/pods available also in the dashboard.
+>How to associate a new pod to namespace?
 >what will happen after deleting the namespace?
 
 
 ### exercise 3 - Namespace with LimitRange
 >Create a namespace with limit range.
->Check the limit on the console
+>Check the limit on the console and using describe command
 >Change the limit and use the apply command:
 ```sh
 kubectl apply -f 3.pod-with-namespace-and-limit.yaml
@@ -93,8 +94,8 @@ kubectl get pods -l env
 ```sh
 kubectl label po <pod name> env=debug --overwrite #override existing label env
 ```
->try to connect the db pod from client pod installing mysql client
-tip use the following command to retrieve pod's ips
+>try to connect the db pod from client pod installing mysql client.
+>Tip: use the following command to retrieve pod's ips
 ```
 kubectl get pods -o wide
 ```
@@ -145,7 +146,7 @@ curl  http://<host>:<port>
 
 ### exercise 9 - Volume
 Let's try creating a hostPath volume.
-The volume is not running. Why ? *Tip use describe command or ```kubectl get event --field-selector involvedObject.name=my-pod```*
+The volume is not running. Why ? *Tip use describe command or ```kubectl get event --field-selector involvedObject.name=my-pod```* Remember hostPath points to a path in minikube, not to a path on your host machine*
 >Warning:
 >HostPath volumes present many security risks, and it is a best practice to avoid the use of HostPaths when possible. When a HostPath volume must be used, it should be scoped to only the required file or >directory.
 
