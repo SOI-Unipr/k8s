@@ -6,11 +6,23 @@ https://minikube.sigs.k8s.io/docs/start/
 ## Kubectl installation
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
 https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
-https://kubernetes.io/docs/tasks/tools/install-kubectl-macos/
-
 
 ## kubectl Cheat Sheet
 https://kubernetes.io/docs/reference/kubectl/cheatsheet/
+
+## enable kubectl autocomplete
+```sh
+apt-get install bash-completion 
+```
+or
+```sh
+yum install bash-completion
+```
+then
+```sh
+kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl > /dev/null
+```
+reopen your bash shell
 
 ## Basic commands
 
